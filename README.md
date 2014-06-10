@@ -8,3 +8,6 @@ Documentation
 
 Download, look at the source and work it out :-)
 
+It can be seen working here:
+
+https://robereng.github.io/threejs-spectrum-analyzer
