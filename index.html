@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script id="vertexShader" type="x-shader/x-vertex">
+    varying vec2 vUv;
+
+    void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+    </script>
+    <script id="fragmentShaderBar" type="x-shader/x-fragment">
+    precision mediump float;
+
+    uniform float time;
+    uniform vec2 resolution;
+
+    varying vec2 vUv;
+
+    void main(void) {
+
+        //vec2 position = vec2(0, 0);
+        vec2 position = vUv;
+
+
+        float color = 0.0;
+        color += cos(position.x * cos(time / 15.0) * 80.0) + cos(position.y * cos(time / 15.0) * 10.0);
+        color += sin(position.y * sin(time / 10.0) * 40.0) + cos(position.x * sin(time / 25.0) * 40.0);
+        color += sin(position.x * sin(time / 5.0) * 10.0) + sin(position.y * sin(time / 35.0) * 80.0);
+        color *= sin(time / 10.0) * 0.5;
+
+        gl_FragColor = vec4(vec3(color, color * 0.5, sin(color + time / 3.0) * 0.75), 1.0);
+
+    }
+    </script>
+    <script id="fragmentShaderBackground" type="x-shader/x-fragment">
+    precision mediump float;
+
+    uniform float time;
+    uniform vec2 resolution;
+
+    void main() {
+        vec2 p = (gl_FragCoord.xy - 0.5 * resolution) / min(resolution.x, resolution.y);
+        vec2 t = vec2(gl_FragCoord.xy / resolution);
+
+        vec3 c = vec3(0);
+
+        for (int i = 0; i < 10; i++) {
+            float t = 0.4 * 3.14159 * float(i) / 30.0 * time * 0.5;
+            float x = cos(3.0 * t);
+            float y = sin(4.0 * t);
+            vec2 o = 0.40 * vec2(x, y);
+            float r = fract(x);
+            float g = 0.5 - r;
+            c += 0.01 / (length(p - o)) * vec3(r, g, 0.9);
+        }
+
+        gl_FragColor = vec4(c, 1);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="main">
+        <h1>Three.js Spectrum Analyzer</h1>
+        <a id="play" class="btn btn-primary">Play</a>
+        <div id="loading">
+            <img id="progress" src="images/loader.gif" />
+        </div>
+        <div id="spectrum_analyzer">
+        </div>
+    </div>
+    <script src="js/lib/dsp.js"></script>
+    <script src="js/lib/three.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.6/TweenMax.min.js"></script>
+    <script src="js/application.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/input_audio_source.js"></script>
+    <script src="js/spectrum_analyzer.js"></script>
+    <script src="js/spectrum_analyzer_view_3d.js"></script>
+    <script src="js/url_audio_source.js"></script>
+</body>
+<script language="javascript">
+window.onload = Application.load();
+</script>
+
+</html>

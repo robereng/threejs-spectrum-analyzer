@@ -1,0 +1,77 @@
+/** 
+* @author rob reng 
+* main style for d3 map demo */
+ @font-face {
+    font-family:'sciencefair';
+    src: url(fonts/science-fair.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family:'sciencefairlight';
+    src: url(fonts/science-fair-light.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    background: #0B0115;
+}
+#main h1 {
+    font-family: sciencefairlight;
+    font-size: 41px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 45px;
+    text-transform: uppercase;
+    color: #29FFFF;
+    display: inline;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+#loading {
+    margin-left:40px;
+    margin-top:10px;
+    float:left;
+}
+#spectrum_analyzer {
+    display:none;
+}
+.btn {
+    display: none;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 40px;
+    font-size: 20px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: sciencefair;
+    float: left;
+    margin-top: 12px;
+    margin-left: 40px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #720090;
+    border-color: #720090;
+    color: #fff;
+}
